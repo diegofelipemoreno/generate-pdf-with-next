@@ -1,4 +1,5 @@
 import React, {useEffect, useRef} from 'react';
+
 import Chart from "chart.js/auto";
 
 const MyChart = () => {
@@ -13,7 +14,7 @@ const MyChart = () => {
       'May',
       'June',
     ];
-  
+
     const data = {
       labels: labels,
       datasets: [{
@@ -23,19 +24,21 @@ const MyChart = () => {
         data: [0, 10, 5, 2, 20, 30, 45],
       }]
     };
-  
+
     const config = {
       type: 'line',
       data: data,
       options: {}
     };
-  
+
     const {current} = ref;
-    
-    new Chart(
+
+    const oso = new Chart(
       current,
       config
     );
+
+    console.log(oso.getVisibleDatasetCount());
   }, []);
 
   return (

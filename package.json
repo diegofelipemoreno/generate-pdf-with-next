@@ -9,8 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "chart.js": "3.2.1",
+    "@kurkle/color": "^0.3.2",
+    "chart.js": "^3.9.1",
+    "chartjs-adapter-luxon": "^1.2.0",
     "chartjs-plugin-datalabels": "^2.0.0",
+    "luxon": "^3.0.1",
+    "moment": "^2.29.4",
     "next": "12.1.0",
     "puppeteer": "^13.5.1",
     "react": "17.0.2",

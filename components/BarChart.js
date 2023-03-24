@@ -18,6 +18,7 @@ const MyBarChart = () => {
         scales: {
             xAxes: [
             {
+                max: 50,
                 gridLines: {
                 display: true,
                 drawBorder: false,
@@ -33,6 +34,7 @@ const MyBarChart = () => {
             ],
             yAxes: [
             {
+                max: 50,
                 display: false,
                 gridLines: {
                 display: false,
