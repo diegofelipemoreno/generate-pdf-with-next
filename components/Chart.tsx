@@ -1,6 +1,6 @@
 import React, {useEffect, useRef} from 'react';
 
-import Chart from "chart.js/auto";
+import {Chart} from "chart.js";
 
 const MyChart = () => {
   const ref = useRef(null);
@@ -33,12 +33,12 @@ const MyChart = () => {
 
     const {current} = ref;
 
-    const oso = new Chart(
-      current,
+    const myChartObj = new Chart(
+      current as any,
       config
     );
 
-    console.log(oso.getVisibleDatasetCount());
+    console.log(myChartObj.getVisibleDatasetCount());
   }, []);
 
   return (

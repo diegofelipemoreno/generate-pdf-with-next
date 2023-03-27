@@ -1,11 +1,10 @@
 import React from 'react';
 
-import { ChartData } from 'chart.js';
 import { Bar } from "react-chartjs-2";
 import {newDateRange} from '../utils';
 
 const ComboChartTwo = () => {
-    const data: ChartData = {
+    const data: any = {
         labels: newDateRange('2023-02-23', '2023-03-06'),
         datasets: [
             {
@@ -21,13 +20,18 @@ const ComboChartTwo = () => {
         ],
     };
 
-    const options = {
+    const options: any = {
         responsive: true,
         interaction: {
           mode: 'index' as const,
           intersect: false,
         },
         scales: {
+            x: {
+                grid: {
+                    drawOnChartArea: false,
+                },
+            },
             y: {
               type: 'linear',
               display: true,

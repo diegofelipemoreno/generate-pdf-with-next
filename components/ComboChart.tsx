@@ -1,9 +1,7 @@
 import React, { useRef } from 'react';
 
-import { BarControllerChartOptions, BarControllerDatasetOptions, ChartData, ChartOptions, ChartType, DefaultDataPoint } from 'chart.js';
-import moment from 'moment';
-import { Bar, ChartProps } from "react-chartjs-2";
-import {months, newDate, newDateRange, Utils} from '../utils';
+import { Bar } from "react-chartjs-2";
+import {newDate, newDateRange} from '../utils';
 
 
 const DATA_COUNT = 10;
@@ -15,10 +13,8 @@ for (let i = 0; i < DATA_COUNT; ++i) {
 
 const ComboChart = () => {
     const elementRef = useRef();
-    const data: ChartData = {
+    const data: any = {
         labels: newDateRange('2023-02-23', '2023-03-05'),
-        //labels: [{"first", "second", "third", "4th", "5th"}],
-        //labels: months({count: 7}),
         datasets: [
             {
                 type: 'line',
@@ -50,8 +46,7 @@ const ComboChart = () => {
         ],
     };
 
-
-    const options = {
+    const options: any = {
         responsive: true,
         interaction: {
             mode: 'index' as const,
@@ -67,6 +62,11 @@ const ComboChart = () => {
             },
         },
         scales: {
+            x: {
+                grid: {
+                    drawOnChartArea: false,
+                },
+            },
             y: {
                 type: 'linear',
                 display: true,
@@ -74,7 +74,7 @@ const ComboChart = () => {
                 max: 80,
                 ticks: {
                     color: '#17793d',
-                  }
+                },
             },
             y1: {
               type: 'linear',
@@ -83,7 +83,10 @@ const ComboChart = () => {
               max: 100,
               ticks: {
                 color: '#2462cd',
-              }
+              },
+              grid: {
+                drawOnChartArea: false,
+              },
             },
             y2: {
               type: 'linear',
@@ -92,19 +95,26 @@ const ComboChart = () => {
               max: 100,
               ticks: {
                 // For a category axis, the val is the index so the lookup via getLabelForValue is needed
-                callback: (value) => {
+                callback: (value: string) => {
                   // Hide every 2nd tick label
                   return `$${value}`;
                 },
                 color: '#d3810a',
                 //display: false
-              }
+              },
+              grid: {
+                drawOnChartArea: false,
+              },
             },
           }
     };
 
     const randomize = () => {
-        const chart = elementRef.current;
+        const chart: any | null = elementRef?.current || null;
+
+        if (!chart) {
+          return;
+        }
 
         chart.data.datasets[0].data = [...chart.data.datasets[0].data].reverse();
         chart.data.datasets[1].data = [...chart.data.datasets[1].data].reverse();
@@ -114,7 +124,7 @@ const ComboChart = () => {
     }
 
     const addDataSet = () => {
-        const chart = elementRef.current;
+        const chart: any | null = elementRef?.current || null;
         const newDataset = {
             label: "Dataset " + (data.datasets.length + 1),
             backgroundColor: 'yellow',
@@ -128,7 +138,7 @@ const ComboChart = () => {
     }
 
     const addData = () => {
-        const chart = elementRef.current;
+        const chart: any | null = elementRef?.current || null;
 
         if (chart.data.datasets.length > 0) {
             chart.data.labels = newDateRange('2023-02-23', '2023-03-10');

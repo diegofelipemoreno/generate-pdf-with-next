@@ -26,7 +26,7 @@ const Home: NextPage = () => {
             width={300}
             alt="Y"
             />
-        
+
         <h2>Bar Chart</h2>
         <MyBarChart />
       </Page>

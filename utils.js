@@ -107,6 +107,40 @@ export function newDateRange(start, end) {
    return dateRange;
 }
 
+export function newTimeRange(start, end, time) {
+  const dateRange = [];
+
+  if (time === 'months') {
+      const startDate = moment(start);
+      const endDate = moment(end);
+
+      if (startDate < endDate) {
+          const date = startDate.startOf('month');
+
+          while (date < endDate.endOf('month')) {
+              dateRange.push(moment(date).format('MMM YY'));
+              date.add(1, 'month');
+          }
+      }
+  }
+
+  if (time === 'days') {
+    const startDate = moment(start);
+    const endDate = moment(end);
+
+    if (startDate < endDate) {
+        const date = startDate.startOf('day');
+
+        while (date < endDate.endOf('day')) {
+            dateRange.push(moment(startDate).format('MMM DD'));
+            date.add(1, 'day');
+        }
+    }
+  }
+
+  return dateRange;
+}
+
 export function newDateRangeTwo(start, end) {
   const dateRange = []
   let startDate = new Date([start, '12:00']);

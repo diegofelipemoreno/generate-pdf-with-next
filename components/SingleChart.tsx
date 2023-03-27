@@ -3,7 +3,7 @@ import { Bar, Line } from "react-chartjs-2";
 import { newDateRange } from '../utils';
 
 const SingleChart = () => {
-    const data = {
+    const data: any = {
         labels: newDateRange('2023-02-23', '2023-03-10'),
         datasets: [
             {
@@ -42,7 +42,7 @@ const SingleChart = () => {
         ]
     };
 
-    const options = {
+    const options: any= {
       responsive: true,
       interaction: {
         mode: 'index' as const,
@@ -55,13 +55,18 @@ const SingleChart = () => {
         },
       },
       scales: {
+        x: {
+          grid: {
+              drawOnChartArea: false,
+          },
+        },
         y: {
           type: 'linear' as const,
           display: true,
           position: 'right' as const,
           ticks: {
             // For a category axis, the val is the index so the lookup via getLabelForValue is needed
-            callback: (value) => {
+            callback: (value: string) => {
               // Hide every 2nd tick label
               return `${value}k`;
             },
@@ -82,6 +87,7 @@ const SingleChart = () => {
           grid: {
             drawOnChartArea: false,
           },
+
         },
       },
     };

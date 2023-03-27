@@ -7,3 +7,4 @@ node_modules/
 **/.depcache.json
 **.hot-update.json
 **.next/**
+.vercel
