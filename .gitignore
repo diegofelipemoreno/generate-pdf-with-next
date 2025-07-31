@@ -8,3 +8,4 @@ node_modules/
 **.hot-update.json
 **.next/**
 .vercel
+.next/
